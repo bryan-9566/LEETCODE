@@ -3,8 +3,8 @@ class MinStack {
     Stack<Integer> s2;
 
     public MinStack() {
-        s1=new Stack();
-        s2=new Stack();
+        s1=new Stack<>();
+        s2=new Stack<>();
         
     }
     
