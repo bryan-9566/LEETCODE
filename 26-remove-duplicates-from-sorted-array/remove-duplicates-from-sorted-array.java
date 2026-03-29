@@ -5,8 +5,8 @@ class Solution {
         {
             if(nums[j]!=nums[i])
             {
-                nums[i+1]=nums[j];
                 i++;
+                nums[i]=nums[j];
             }
         }
         return i+1;
