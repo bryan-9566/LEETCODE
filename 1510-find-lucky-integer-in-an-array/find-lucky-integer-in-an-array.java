@@ -6,11 +6,11 @@ class Solution {
       {
         hem[arr[i]]++;
       }
-      for(int i=0;i<arr.length;i++)
+      for(int i=1;i<hem.length;i++)
       {
-        if(hem[arr[i]]==arr[i])
+        if(hem[i]==i)
         {
-            max=Math.max(max,arr[i]);
+            max=Math.max(max,i);
         }
       }
       return max;
