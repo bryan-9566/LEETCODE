@@ -10,10 +10,7 @@ class Solution {
         {
             char ch=ransomNote.charAt(i);
             hash[ch-'a']--;
-        }
-        for(int i=0;i<hash.length;i++)
-        {
-            if(hash[i]<0)
+            if(hash[ch-'a']<0)
             {
                 return false;
             }
