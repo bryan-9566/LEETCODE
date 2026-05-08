@@ -3,27 +3,26 @@ class Solution {
         int low=0,mid=0,high=nums.length-1;
         while(mid<=high)
         {
-            if(nums[mid]==1)
+            if(nums[mid]==0)
             {
-                mid++;
-            }
-            else if(nums[mid]==0)
-            {
-                swap(low,mid,nums);
+                int temp=nums[mid];
+                nums[mid]=nums[low];
+                nums[low]=temp;
                 mid++;
                 low++;
             }
+            else if(nums[mid]==1)
+            {
+                mid++;
+            }
             else
             {
-                swap(mid,high,nums);
+                int temp=nums[mid];
+                nums[mid]=nums[high];
+                nums[high]=temp;
                 high--;
             }
         }
-    }
-    public void swap(int a,int b,int[] nums)
-    {
-        int temp=nums[a];
-        nums[a]=nums[b];
-        nums[b]=temp;
+        
     }
 }
