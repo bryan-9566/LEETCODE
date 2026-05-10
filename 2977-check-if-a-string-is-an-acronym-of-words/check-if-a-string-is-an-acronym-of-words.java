@@ -1,11 +1,16 @@
 class Solution {
     public boolean isAcronym(List<String> words, String s) {
-        String bry="";
-        for(String h:words)
+        if(words.size()!=s.length())
         {
-            char ch=h.charAt(0);
-            bry+=ch;
+            return false;
         }
-        return bry.equals(s);
+        for(int i=0;i<words.size();i++)
+        {
+            if(words.get(i).charAt(0)!=s.charAt(i))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
