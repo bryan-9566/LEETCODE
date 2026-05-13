@@ -1,27 +1,19 @@
 class Solution {
     public int[] findErrorNums(int[] nums) {
-        int i=0;
-        while(i<nums.length)
+        int n=nums.length;
+        long sn=(long)n*(n+1)/2;
+        long s2n=(long)n*(n+1)*(2*n+1)/6;
+        long sa=0,s2a=0;
+        for(int i=0;i<nums.length;i++)
         {
-            int corr=nums[i]-1;
-            if(nums[i]!=nums[corr])
-            {
-                int temp=nums[i];
-                nums[i]=nums[corr];
-                nums[corr]=temp;
-            }
-            else
-            {
-                i++;
-            }
+            sa+=nums[i];
+            s2a+=nums[i]*nums[i];
         }
-        for(int j=0;j<nums.length;j++)
-        {
-            if(nums[j]!=j+1)
-            {
-                return new int[] {nums[j],j+1};
-            }
-        }
-        return new int[] {-1,-1};
+        long v1=sa-sn;
+        long v2=s2a-s2n;
+        v2=v2/v1;
+        long repeat=(v1+v2)/2;
+        long miss=repeat-v1;
+        return new int[] {(int)repeat,(int)miss};
     }
 }
