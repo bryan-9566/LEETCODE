@@ -1,43 +1,59 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int[] ans={-1,-1};
-        ans[0]=bryan(nums,target,true);
-        if(ans[0]!=-1)
-        {
-            ans[1]=bryan(nums,target,false);
-        }
-        return ans;
+      int first=-1,last=-1;
+      int n=nums.length;
+      first=bfsearch(nums,n,target);
+      if(first==-1)
+      {
+        return new int[] {first,last};
+      }  
+      last=blsearch(nums,n,target);
+      return new int[] {first,last};
     }
-    public int bryan(int[] a,int t,boolean bry)
+    public int bfsearch(int[] a,int n,int x)
     {
-        int s=0;
-        int e=a.length-1;
-        int ans=-1;
-        while(s<=e)
+        int first=-1;
+        int low=0,high=n-1;
+        while(low<=high)
         {
-            int mid=s+(e-s)/2;
-            if(t>a[mid])
+            int mid=low+(high-low)/2;
+            if(a[mid]==x)
             {
-                s=mid+1;
+                first=mid;
+                high=mid-1;
             }
-            else if(t<a[mid])
+            else if(a[mid]>x)
             {
-                e=mid-1;
+                high=mid-1;
             }
             else
             {
-                ans=mid;
-                if(bry)
-                {
-                    e=mid-1;
-                }
-                else
-                {
-                    s=mid+1;
-                }
+                low=mid+1;
             }
-        
         }
-        return ans;
+        return first;
+    }
+    public int blsearch(int[] a,int n,int x)
+    {
+        int last=-1;
+        int low=0,high=n-1;
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(a[mid]==x)
+            {
+                last=mid;
+                low=mid+1;
+            }
+            else if(a[mid]>x)
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        return last;
     }
 }
