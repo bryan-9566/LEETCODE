@@ -1,11 +1,14 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
         HashMap<Character,Character> bry=new HashMap<>();
+        HashMap<Character,Character> hem=new HashMap<>();
         for(int i=0;i<s.length();i++)
         {
-            if(bry.containsKey(s.charAt(i)))
+            char ch=s.charAt(i);
+            char bh=t.charAt(i);
+            if(bry.containsKey(ch))
             {
-                if(bry.get(s.charAt(i))==t.charAt(i))
+                if(bry.get(ch)==bh)
                 {
                     continue;
                 }
@@ -16,12 +19,24 @@ class Solution {
             }
             else
             {
-                if(bry.containsValue(t.charAt(i)))
+                bry.put(ch,bh);
+            }
+            if(hem.containsKey(bh))
+            {
+                if(hem.get(bh)==ch)
+                {
+                    continue;
+                }
+                else
                 {
                     return false;
                 }
-                bry.put(s.charAt(i),t.charAt(i));
             }
+            else
+            {
+                hem.put(bh,ch);
+            }
+
         }
         return true;
     }
