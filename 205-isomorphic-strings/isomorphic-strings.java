@@ -8,11 +8,7 @@ class Solution {
             char bh=t.charAt(i);
             if(bry.containsKey(ch))
             {
-                if(bry.get(ch)==bh)
-                {
-                    continue;
-                }
-                else
+                if(bry.get(ch)!=bh)
                 {
                     return false;
                 }
@@ -23,11 +19,7 @@ class Solution {
             }
             if(hem.containsKey(bh))
             {
-                if(hem.get(bh)==ch)
-                {
-                    continue;
-                }
-                else
+                if(hem.get(bh)!=ch)
                 {
                     return false;
                 }
