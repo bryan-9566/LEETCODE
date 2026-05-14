@@ -19,7 +19,7 @@ class Solution {
                 low=mid+1;
             }
         }
-        if(nums[mid]<=nums[high])
+        else
         {
             if(nums[mid]<=target && target<=nums[high])
             {
