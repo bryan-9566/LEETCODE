@@ -1,29 +1,36 @@
 class Solution {
     public int search(int[] nums, int target) {
-        return sol(nums,target,0,nums.length-1);
-    }
-    public int sol(int[] a,int t,int s,int e)
-    {
-        int m=s+(e-s)/2;
-        if(s>e)
-         return -1;
-        if(a[m]==t)
-         return m;
-        if(a[s]<=a[m])
+      int low=0,high=nums.length-1;
+      while(low<=high)
+      {
+        int mid=low+(high-low)/2;
+        if(nums[mid]==target)
         {
-            if(t>=a[s]&&t<=a[m])
+            return mid;
+        }
+        if(nums[low]<=nums[mid])
+        {
+            if(nums[low]<=target && target<=nums[mid])
             {
-                return sol(a,t,s,m-1);
+                high=mid-1;
             }
             else
             {
-                return sol(a,t,m+1,e);
+                low=mid+1;
             }
         }
-        if(t>=a[m] && t<=a[e])
+        if(nums[mid]<=nums[high])
         {
-            return sol(a,t,m+1,e);
+            if(nums[mid]<=target && target<=nums[high])
+            {
+                low=mid+1;
+            }
+            else
+            {
+                high=mid-1;
+            }
         }
-        return sol(a,t,s,m-1);
+      } 
+      return -1; 
     }
 }
