@@ -1,8 +1,9 @@
 class Solution {
     public int search(int[] nums, int target) {
-      int low=0,high=nums.length-1;
-      while(low<=high)
-      {
+       int low=0,high=nums.length-1;
+       int ans=-1;
+       while(low<=high)
+       {
         int mid=low+(high-low)/2;
         if(nums[mid]==target)
         {
@@ -19,7 +20,7 @@ class Solution {
                 low=mid+1;
             }
         }
-        else
+        if(nums[mid]<=nums[high])
         {
             if(nums[mid]<=target && target<=nums[high])
             {
@@ -30,7 +31,7 @@ class Solution {
                 high=mid-1;
             }
         }
-      } 
-      return -1; 
+       } 
+       return ans;
     }
 }
