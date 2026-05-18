@@ -10,7 +10,7 @@ class Solution {
         while(low<=high)
         {
             int mid=low+(high-low)/2;
-            if(find(nums,threshold,mid))
+            if(find(nums,mid)<=threshold)
             {
                 ans=mid;
                 high=mid-1;
@@ -22,13 +22,13 @@ class Solution {
         }
         return ans;
     }
-    public boolean find(int[] b,int th,int div)
+    public int find(int[] b,int div)
     {
         int sum=0;
         for(int i=0;i<b.length;i++)
         {
             sum+=Math.ceil((double)b[i]/div);
         }
-        return sum<=th;
+        return sum;
     }
 }
