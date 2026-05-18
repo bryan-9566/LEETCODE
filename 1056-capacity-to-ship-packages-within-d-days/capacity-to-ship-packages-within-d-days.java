@@ -1,7 +1,6 @@
 class Solution {
     public int shipWithinDays(int[] weights, int days) {
         int max=Integer.MIN_VALUE,sum=0;
-        int ans=0;
         for(int i=0;i<weights.length;i++)
         {
             max=Math.max(max,weights[i]);
@@ -13,7 +12,6 @@ class Solution {
             int mid=low+(high-low)/2;
             if(find(weights,mid)<=days)
             {
-                ans=mid;
                 high=mid-1;
             }
             else
@@ -21,7 +19,7 @@ class Solution {
                 low=mid+1;
             }
         }
-        return ans;
+        return low;
     }
     public int find(int[] b,int cap)
     {
