@@ -1,25 +1,29 @@
 class Solution {
     public String customSortString(String order, String s) {
-        StringBuilder bry=new StringBuilder();
+        StringBuilder hem=new StringBuilder();
+        int[] hash=new int[26];
+        for(int i=0;i<s.length();i++)
+        {
+            hash[s.charAt(i)-'a']++;
+        }
         for(int i=0;i<order.length();i++)
         {
             char ch=order.charAt(i);
-            for(int j=0;j<s.length();j++)
+            while(hash[ch-'a']>0)
             {
-                if(s.charAt(j)==ch)
-                {
-                    bry.append(ch);
-                }
+                hem.append(ch);
+                hash[ch-'a']--;
             }
         }
         for(int i=0;i<s.length();i++)
         {
-            if(order.indexOf(s.charAt(i))==-1)
+            char ch=s.charAt(i);
+            while(hash[ch-'a']>0)
             {
-                bry.append(s.charAt(i));
+                hem.append(ch);
+                hash[ch-'a']--;
             }
         }
-        System.out.println(bry);
-        return new String(bry);
+        return new String(hem);
     }
 }
