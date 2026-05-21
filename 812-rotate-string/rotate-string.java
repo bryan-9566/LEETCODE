@@ -1,10 +1,10 @@
 class Solution {
     public boolean rotateString(String s, String goal) {
-        if(s.equals(goal))
+        if(s.length()!=goal.length())
         {
-            return true;
+            return false;
         }
-        for(int i=1;i<s.length();i++)
+        for(int i=0;i<s.length();i++)
         {
             char[] bry=s.toCharArray();
             reverse(bry,0,bry.length-1);
