@@ -1,13 +1,13 @@
 class Solution {
     public int maxDepth(String s) {
         int max=Integer.MIN_VALUE,count=0;
-        for(int i=0;i<s.length();i++)
+        for(char bry:s.toCharArray())
         {
-            if(s.charAt(i)=='(')
+            if(bry=='(')
             {
                 count++;
             }
-            else if(s.charAt(i)==')')
+            else if(bry==')')
             {
                 count--;
             }
