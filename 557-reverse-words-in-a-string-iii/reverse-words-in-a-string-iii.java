@@ -1,30 +1,35 @@
 class Solution {
     public String reverseWords(String s) {
-        String[] words=s.split(" ");
-        StringBuilder bry=new StringBuilder();
-        for(int i=0;i<words.length;i++)
+        String[] bry=s.split(" ");
+        for(int i=0;i<bry.length;i++)
         {
-            String word=words[i];
-            bry.append(reverse(word));
-            if(i!=words.length-1)
-            {
-                bry.append(" ");
-            }
+            bry[i]=reverse(bry[i]);
         }
-        return new String(bry);
+        String a="";
+        for(int i=0;i<bry.length;i++)
+        {
+            a+=bry[i];
+            if(i!=bry.length-1)
+            {
+                a+=" ";
+            }
+            
+        }
+        return a;
+        
     }
-    public String reverse(String s)
+    public String reverse(String bh)
     {
-        char[] bry=s.toCharArray();
-        int i=0,j=bry.length-1;
+        int i=0,j=bh.length()-1;
+        char[] h=bh.toCharArray();
         while(i<j)
         {
-            char temp=bry[i];
-            bry[i]=bry[j];
-            bry[j]=temp;
+            char temp=h[i];
+            h[i]=h[j];
+            h[j]=temp;
             i++;
             j--;
         }
-        return new String(bry);
+        return new String(h);
     }
 }
