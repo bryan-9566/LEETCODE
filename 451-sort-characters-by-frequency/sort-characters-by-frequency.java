@@ -1,34 +1,29 @@
 class Solution {
     public String frequencySort(String s) {
-        String res="";
-        Map<Character,Integer> fre=new HashMap<>();
+        StringBuilder bry=new StringBuilder();
+        HashMap<Character,Integer> bh=new HashMap<>();
         for(int i=0;i<s.length();i++)
         {
-            fre.put(s.charAt(i),fre.getOrDefault(s.charAt(i),0)+1);
+            bh.put(s.charAt(i),bh.getOrDefault(s.charAt(i),0)+1);
         }
-        while(!fre.isEmpty())
+        while(!bh.isEmpty())
         {
             int max=0;
-            char c=0;
-            for(Map.Entry<Character,Integer> entry:fre.entrySet() )
-        {
-            if(entry.getValue()>max)
+            char c=' ';
+            for(Map.Entry<Character,Integer> h:bh.entrySet())
             {
-                max=entry.getValue();
-                c=entry.getKey();
+                if(h.getValue()>max)
+                {
+                    max=h.getValue();
+                    c=h.getKey();
+                }
             }
+            for(int i=0;i<max;i++)
+            {
+                bry.append(c);
+            }
+            bh.remove(c);
         }
-        for(int i=0;i<max;i++)
-        {
-            res+=c;;
-        }
-        fre.remove(c);
-
-        }
-        return res;
-        
-
-
-
+        return new String(bry);
     }
 }
