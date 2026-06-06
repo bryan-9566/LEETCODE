@@ -2,7 +2,6 @@ class Solution {
     public int[] leftRightDifference(int[] nums) {
         int[] ls=new int[nums.length];
         int[] rs=new int[nums.length];
-        int[] bh=new int[nums.length];
         for(int i=0;i<nums.length;i++)
         {
             if(i==0)
@@ -33,11 +32,11 @@ class Solution {
                 }
             }
         }
-        for(int i=0;i<bh.length;i++)
+        for(int i=0;i<nums.length;i++)
         {
-            bh[i]+=Math.abs(ls[i]-rs[i]);
+            nums[i]=Math.abs(ls[i]-rs[i]);
         }
         
-        return bh;
+        return nums;
     }
 }
