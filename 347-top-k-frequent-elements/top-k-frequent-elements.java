@@ -1,7 +1,8 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         HashMap<Integer,Integer> bh=new HashMap<>();
-        ArrayList<Integer> arr=new ArrayList<>();
+        int[] h=new int[k];
+        int hb=0;
         for(int i=0;i<nums.length;i++)
         {
             bh.put(nums[i],bh.getOrDefault(nums[i],0)+1);
@@ -18,18 +19,13 @@ class Solution {
                     val=e.getKey();
                 }
             }
-            arr.add(val);
+            h[hb++]=val;
             bh.remove(val);
             k--;
             if(k==0)
             {
                 break;
             }
-        }
-        int[] h=new int[arr.size()];
-        for(int i=0;i<h.length;i++)
-        {
-            h[i]=arr.get(i);
         }
         return h;
     }
