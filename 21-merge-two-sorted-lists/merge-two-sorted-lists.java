@@ -21,14 +21,12 @@ class Solution {
             if(t1.val<=t2.val)
             {
                 dummy.next=t1;
-                dummy.next.val=t1.val;
                 dummy=dummy.next;
                 t1=t1.next;
             }
             else
             {
                 dummy.next=t2;
-                dummy.next.val=t2.val;
                 dummy=dummy.next;
                 t2=t2.next;
             }
@@ -36,14 +34,12 @@ class Solution {
         while(t1!=null)
         {
             dummy.next=t1;
-            dummy.next.val=t1.val;
             t1=t1.next;
             dummy=dummy.next;
         }
         while(t2!=null)
         {
             dummy.next=t2;
-            dummy.next.val=t2.val;
             t2=t2.next;
             dummy=dummy.next;
         }
