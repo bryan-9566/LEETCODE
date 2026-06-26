@@ -1,29 +1,29 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        Stack<Integer> st=new Stack<>();
         HashMap<Integer,Integer> bry=new HashMap<>();
-        for(int i=0;i<nums2.length;i++)
+        for(int i=nums2.length-1;i>=0;i--)
         {
-            int max=nums2[i];
-            boolean bh=false;
-            for(int j=i+1;j<nums2.length;j++)
+            while(!st.isEmpty() && nums2[i]>=st.peek())
             {
-                if(nums2[j]>max)
-                {
-                    bh=true;
-                    bry.put(max,nums2[j]);
-                    break;
-                }
+                st.pop();
             }
-            if(!bh)
+            if(st.isEmpty())
             {
-                bry.put(max,-1);
+                bry.put(nums2[i],-1);
             }
+            else
+            {
+                bry.put(nums2[i],st.peek());
+            }
+            st.push(nums2[i]);
         }
-        int[] h=new int[nums1.length];
+        int[] bh=new int[nums1.length];
         for(int i=0;i<nums1.length;i++)
         {
-            h[i]=bry.get(nums1[i]);
+            bh[i]=bry.get(nums1[i]);
         }
-        return h;
+        return bh;
+
     }
 }
