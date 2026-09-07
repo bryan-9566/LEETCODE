@@ -1,20 +1,21 @@
 class Solution {
-    public int search(int[] nums, int target) {
-        int low=0,high=nums.length-1;
-        while(low<=high)
+    public int search(int[] arr, int k) {
+        int s=0;
+        int e=arr.length-1;
+        while(s<=e)
         {
-            int mid=low+(high-low)/2;
-            if(nums[mid]==target)
+            int mid=s+(e-s)/2;
+            if(arr[mid]==k)
             {
                 return mid;
             }
-            else if(nums[mid]>target)
+            else if(arr[mid]<k)
             {
-                high=mid-1;
+                s=mid+1;
             }
             else
             {
-                low=mid+1;
+                e=mid-1;
             }
         }
         return -1;
