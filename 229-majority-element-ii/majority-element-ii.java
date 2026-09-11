@@ -1,24 +1,24 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        List<Integer> bry=new ArrayList<>();
-        int cnt1=0,cnt2=0,el1=0,el2=0;
-        for(int i=0;i<nums.length;i++)
-        {
-            if(cnt1==0 && nums[i]!=el2)
+        ArrayList<Integer> bry=new ArrayList<>();
+          int cnt1=0,cnt2=0,el1=0,el2=0;
+          for(int num:nums)
+          {
+            if(cnt1==0 && num!=el2)
             {
                 cnt1=1;
-                el1=nums[i];
+                el1=num;
             }
-            else if(cnt2==0 && nums[i]!=el1)
+            else if(cnt2==0 && num!=el1)
             {
                 cnt2=1;
-                el2=nums[i];
+                el2=num;
             }
-            else if(nums[i]==el1)
+            else if(num==el1)
             {
                 cnt1++;
             }
-            else if(nums[i]==el2)
+            else if(num==el2)
             {
                 cnt2++;
             }
@@ -27,15 +27,16 @@ class Solution {
                 cnt1--;
                 cnt2--;
             }
-        }
-        cnt1=0;cnt2=0;
-        for(int i=0;i<nums.length;i++)
+          }
+        cnt1=0;
+        cnt2=0;
+        for(int num:nums)
         {
-            if(nums[i]==el1)
+            if(num==el1)
             {
                 cnt1++;
             }
-            else if(nums[i]==el2)
+            else if(num==el2)
             {
                 cnt2++;
             }
