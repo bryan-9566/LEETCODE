@@ -1,18 +1,18 @@
 class Solution {
     public int subarraySum(int[] nums, int k) {
-        int cnt=0;
-        for(int i=0;i<nums.length;i++)
+       HashMap<Integer,Integer> bry=new HashMap<>();
+       bry.put(0,1);
+       int sum=0,cnt=0;
+       for(int i=0;i<nums.length;i++)
+       {
+        sum+=nums[i];
+        int rem=sum-k;
+        if(bry.containsKey(rem))
         {
-            int sum=0;
-            for(int j=i;j<nums.length;j++)
-            {
-                sum+=nums[j];
-                if(sum==k)
-                {
-                    cnt++;
-                }
-            }
+            cnt+=bry.get(rem);
         }
-        return cnt;
+        bry.put(sum,bry.getOrDefault(sum,0)+1);
+       }
+       return cnt;
     }
 }
