@@ -1,23 +1,23 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> bry=new ArrayList<>();
+        List<List<Integer>> bh=new ArrayList<>();
         for(int i=1;i<=numRows;i++)
         {
-            bry.add(rows(i));
+            bh.add(generaterow(i));
         }
-        return bry;
+        return bh;
     }
-    public List<Integer> rows(int row)
+    public List<Integer> generaterow(int r)
     {
-        List<Integer> hem=new ArrayList<>();
+        List<Integer> b=new ArrayList<>();
         long ans=1;
-        hem.add((int)ans);
-        for(int i=1;i<row;i++)
+        b.add((int)ans);
+        for(int i=1;i<r;i++)
         {
-            ans=ans*(row-i);
+            ans=ans*(r-i);
             ans=ans/i;
-            hem.add((int)ans);
+            b.add((int)ans);
         }
-        return hem;
+        return b;
     }
 }
