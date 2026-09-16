@@ -1,25 +1,26 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
-       List<List<Integer>> bry=new ArrayList<>();
-       Arrays.sort(intervals,(a,b)->Integer.compare(a[0],b[0]));
-       for(int[] h:intervals)
-       {
-         if(bry.isEmpty() || bry.get(bry.size()-1).get(1)<h[0])
-         {
-            bry.add(Arrays.asList(h[0],h[1]));
-         }
-         else
-         {
-            int end=bry.get(bry.size()-1).get(1);
-            bry.get(bry.size()-1).set(1,Math.max(end,h[1]));
-         }
-       }
-       int[][] hem=new int[bry.size()][2];
-       for(int i=0;i<hem.length;i++)
-       {
-        hem[i][0]=bry.get(i).get(0);
-        hem[i][1]=bry.get(i).get(1);
-       }
-       return hem;
+        Arrays.sort(intervals,(a,b)->a[0]-b[0]);
+        List<List<Integer>> bh=new ArrayList<>();
+        for(int[] b:intervals)
+        {
+            if(bh.isEmpty() || bh.get(bh.size()-1).get(1)<b[0])
+            {
+                bh.add(Arrays.asList(b[0],b[1]));
+            }
+            else
+            {
+                int last=bh.size()-1;
+                int end=bh.get(last).get(1);
+                bh.get(last).set(1,Math.max(end,b[1]));
+            }
+        }
+        int[][] bry=new int[bh.size()][2];
+        for(int i=0;i<bry.length;i++)
+        {
+            bry[i][0]=bh.get(i).get(0);
+            bry[i][1]=bh.get(i).get(1);
+        }
+        return bry;
     }
 }
