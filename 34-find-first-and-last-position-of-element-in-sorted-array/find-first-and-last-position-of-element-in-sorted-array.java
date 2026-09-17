@@ -1,50 +1,58 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-      int first=-1,last=-1;
-      int n=nums.length;
-      first=bfsearch(nums,n,target);
-      if(first==nums.length || nums[first]!=target)
-      {
-        return new int[] {-1,-1};
-      }
-      return new int[] {first,blsearch(nums,n,target)-1};
-    }
-    public int bfsearch(int[] a,int n,int x)
-    {
-        int first=n;
-        int low=0,high=n-1;
-        while(low<=high)
+        int first=-1,last=-1;
+        first=s1(nums,target);
+        if(first==-1)
         {
-            int mid=low+(high-low)/2;
-            if(a[mid]>=x)
+            return new int[] {-1,-1};
+        }
+        last=s2(nums,target);
+        return new int[] {first,last};
+    }
+    public int s1(int[] a,int x)
+    {
+        int ans=-1;
+        int s=0,e=a.length-1;
+        while(s<=e)
+        {
+            int mid=s+(e-s)/2;
+            if(a[mid]==x)
             {
-                first=mid;
-                high=mid-1;
+                ans=mid;
+                e=mid-1;
+            }
+            else if(a[mid]<x)
+            {
+                s=mid+1;
             }
             else
             {
-                low=mid+1;
+                e=mid-1;
             }
         }
-        return first;
+        return ans;
     }
-    public int blsearch(int[] a,int n,int x)
+    public int s2(int[] a,int x)
     {
-        int last=n;
-        int low=0,high=n-1;
-        while(low<=high)
+        int ans=-1;
+        int s=0,e=a.length-1;
+        while(s<=e)
         {
-            int mid=low+(high-low)/2;
-            if(a[mid]>x)
+            int mid=s+(e-s)/2;
+            if(a[mid]==x)
             {
-                last=mid;
-                high=mid-1;
+                ans=mid;
+                s=mid+1;
+            }
+            else if(a[mid]<x)
+            {
+                s=mid+1;
             }
             else
             {
-                low=mid+1;
+                e=mid-1;
             }
         }
-        return last;
+        return ans;
     }
 }
